@@ -5,7 +5,6 @@ import { Inter } from "next/font/google";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import AuthProvider from "./(components)/AuthProvider";
-import SessionProvider from "./(components)/SessionProvider";
 
 config.autoAddCss = false;
 
@@ -20,17 +19,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <AuthProvider />
-      <SessionProvider>
-        <body className={inter.className}>
-          <div className="flex flex-col h-screen max-h-screen">
-            <Nav />
 
-            <div className="flex-grow overflow-y-auto bg-page text-default-text">
-              {children}
-            </div>
+      <body className={inter.className}>
+        <div className="flex flex-col h-screen max-h-screen">
+          <Nav />
+
+          <div className="flex-grow overflow-y-auto bg-page text-default-text">
+            {children}
           </div>
-        </body>
-      </SessionProvider>
+        </div>
+      </body>
+
       <AuthProvider />
     </html>
   );
