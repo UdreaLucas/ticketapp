@@ -1,6 +1,5 @@
 import React from "react";
 import TicketCard from "./(components)/TicketCard";
-import AuthProvider from "./(components)/AuthProvider";
 
 const getTickets = async () => {
   try {
@@ -11,7 +10,7 @@ const getTickets = async () => {
     if (!res.ok) {
       throw new Error("Failed to fetch topics");
     }
-
+    console.log("res: ", res);
     return res.json();
   } catch (error) {
     console.log("Error loading topics: ", error);
