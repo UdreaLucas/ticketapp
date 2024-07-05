@@ -1,8 +1,14 @@
-import { faHome, faTicket } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightFromBracket,
+  faHome,
+  faTicket,
+  faUserPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
+import { faIdCard } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = async () => {
   const session = await getServerSession(options);
@@ -16,12 +22,34 @@ const Nav = async () => {
           <FontAwesomeIcon icon={faTicket} className="icon" />
         </Link>
       </div>
-      <div>
-        <Link href={"/CreateUser"}> Sign Up</Link>
+      <div className="flex justify-between space-x-4 text-default-text">
+        <Link
+          className="bg-page rounded-md py-1 px-1 hover:bg-blue-600"
+          href={"/CreateUser"}
+        >
+          {" "}
+          <div>
+            <FontAwesomeIcon className="pr-1" icon={faUserPlus} />
+            SignUp
+          </div>
+        </Link>
         {session ? (
-          <Link href={"/api/auth/signout?callbackUrl=/"}> Logout</Link>
+          <Link
+            className="bg-page rounded-md py-1 px-1 hover:bg-red-600"
+            href={"/api/auth/signout?callbackUrl=/"}
+          >
+            <FontAwesomeIcon />{" "}
+            <div>
+              {" "}
+              <FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout{" "}
+            </div>
+          </Link>
         ) : (
-          <Link href={"/api/auth/signin"}> Login</Link>
+          <Link href={"/api/auth/signin"}>
+            <div className="bg-page rounded-md py-1 px-1 hover:bg-green-400">
+              <FontAwesomeIcon icon={faIdCard} className="icon" /> Login
+            </div>
+          </Link>
         )}
       </div>
     </nav>
