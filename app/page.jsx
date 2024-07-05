@@ -1,5 +1,6 @@
 import React from "react";
 import TicketCard from "./(components)/TicketCard";
+import AuthProvider from "./(components)/AuthProvider";
 
 const getTickets = async () => {
   try {
