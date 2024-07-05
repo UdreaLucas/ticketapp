@@ -1,6 +1,8 @@
+"use client";
 import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
+import UserForm from "../(components)/UserForm";
 
 const CreateUser = async () => {
   const session = await getServerSession(options);
@@ -11,12 +13,7 @@ const CreateUser = async () => {
 
   return (
     <div>
-      <h1>Create User</h1>
-      <form>
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
-        <button type="submit">Create</button>
-      </form>
+      <UserForm />
     </div>
   );
 };
